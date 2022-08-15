@@ -1,5 +1,8 @@
 package com.mrityunjoy.demoClient.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +26,8 @@ public class DemoController {
 	
 	@GetMapping("/weak-login")
 	public Mono<TokenResponse> loginWeak() {
-		String username = "user";
-		String password = "password";
+		String username = "begula";
+		String password = "abc";
 		
 		WebClient webClient = WebClient.builder()
 				.filter(ExchangeFilterFunctions
@@ -44,5 +47,7 @@ public class DemoController {
 	@Setter
 	private static class TokenResponse {
 		private String token;
+		private String username;
+		private List<Map<String, String>> authorities;
 	}
 }
